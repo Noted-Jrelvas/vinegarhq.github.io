@@ -201,7 +201,7 @@ Lastly, you must specify a wine prefix for Vinegar to use, to ensure any existin
 <li>Will essentially just act as a Roblox Player/Roblox Studio installer and bootstrapper, with no other functionality or features</li>
 </ul>
 <p>Caveat: Your .desktop files will obviously not be affected by this. This means you won't be able to log into studio or open links/games from roblox.com. The workaround is to manually edit the desktop file so it uses the right <code>-config</code> flag and <code>WINEPREFIX</code>. They can be found at <code>usr/share/applications</code>. </p>
-<p>Note that env variables in .desktop Exec commands must be declared with the <code>env</code>. For example: Do <code>env WINEPREFIX = /tmp/report vinegar -config /home/jrelvas/Documents/winehq-report.toml player</code> instead of <code>WINEPREFIX=/tmp/report vinegar -config /home/jrelvas/Documents/winehq-report.toml player</code></p>
+<p>Note that env variables in .desktop Exec commands must be declared with the <code>env</code> command. For example: Do <code>env WINEPREFIX = /tmp/report vinegar -config /home/jrelvas/Documents/winehq-report.toml player</code> instead of <code>WINEPREFIX=/tmp/report vinegar -config /home/jrelvas/Documents/winehq-report.toml player</code></p>
 <p><strong>Warning</strong>: After following these steps, ensure your report follows <a href="https://wiki.winehq.org/Bugs">WineHQ.org's bug report guidelines</a>.</p>
 <p><strong>Warning</strong>: Keep in mind that any issues you face while following these steps are unsupported and should not be reported to us.</p>
 
