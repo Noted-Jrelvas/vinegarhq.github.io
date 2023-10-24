@@ -74,7 +74,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../../Home/index.html"><strong aria-hidden="true">1.</strong> Home</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../Home/faq.html"><strong aria-hidden="true">1.1.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../../Installation/index.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../Installation/guides/source.html"><strong aria-hidden="true">2.1.</strong> Installing from source</a></li><li class="chapter-item expanded "><a href="../../Installation/guides/flatpak.html"><strong aria-hidden="true">2.2.</strong> Installing from Flatpak</a></li><li class="chapter-item expanded "><a href="../../Installation/guides/package.html" class="active"><strong aria-hidden="true">2.3.</strong> Installing from package</a></li></ol></li><li class="chapter-item expanded "><a href="../../Configuration/index.html"><strong aria-hidden="true">3.</strong> Configuration</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../Configuration/tips-and-tricks/index.html"><strong aria-hidden="true">3.1.</strong> Tips and tricks</a></li></ol></li><li class="chapter-item expanded "><a href="../../Contributing/index.html"><strong aria-hidden="true">4.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="../../Troubleshooting/index.html"><strong aria-hidden="true">5.</strong> Troubleshooting</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../../Home/index.html"><strong aria-hidden="true">1.</strong> Home</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../Home/faq.html"><strong aria-hidden="true">1.1.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../../Installation/index.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../Installation/guides/source.html"><strong aria-hidden="true">2.1.</strong> Installing from source</a></li><li class="chapter-item expanded "><a href="../../Installation/guides/flatpak.html"><strong aria-hidden="true">2.2.</strong> Installing from Flatpak</a></li><li class="chapter-item expanded "><a href="../../Installation/guides/package.html" class="active"><strong aria-hidden="true">2.3.</strong> Installing from package</a></li></ol></li><li class="chapter-item expanded "><a href="../../Configuration/index.html"><strong aria-hidden="true">3.</strong> Configuration</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../Configuration/tips-and-tricks/index.html"><strong aria-hidden="true">3.1.</strong> Tips and tricks</a></li></ol></li><li class="chapter-item expanded "><a href="../../Contributing/index.html"><strong aria-hidden="true">4.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="../../Troubleshooting/index.html"><strong aria-hidden="true">5.</strong> Troubleshooting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../Troubleshooting/winehq.html"><strong aria-hidden="true">5.1.</strong> Reporting issues to WineHQ</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -147,6 +147,7 @@
 cd vinegar
 makepkg -si
 </code></pre>
+<p>Alternatively install <code>vinegar</code> with a aur helper</p>
 <h3 id="gentoo"><a class="header" href="#gentoo">Gentoo</a></h3>
 <p>Firstly, make sure the repository module for eselect is installed:</p>
 <pre><code class="language-sh">emerge app-eselect/eselect-repository
@@ -161,6 +162,14 @@ emaint sync
 <p>Alternatively, you can use the live ebuild by creating a <code>/etc/portage/package.accept_keywords/vinegar</code> file with the following content:</p>
 <pre><code>games-util/vinegar **
 </code></pre>
+<h3 id="source-mage"><a class="header" href="#source-mage">Source Mage</a></h3>
+<p>First, make sure the games grimoire is added:</p>
+<pre><code class="language-sh">scribe add games
+</code></pre>
+<p>Then, cast the spell:</p>
+<pre><code class="language-sh">cast vinegar
+</code></pre>
+<p>(Do note that on 64-bit systems, 32-bit wine and gnutls will have to be sourced elsewhere as there is no multilib support)</p>
 
                     </main>
 

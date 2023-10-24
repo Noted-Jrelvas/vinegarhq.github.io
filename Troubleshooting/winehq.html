@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Home - Vinegar</title>
+        <title>Reporting issues to WineHQ - Vinegar</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="The documentation of the Vinegar project, which makes Roblox on Linux more convenient.">
@@ -74,7 +74,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../Home/index.html" class="active"><strong aria-hidden="true">1.</strong> Home</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Home/faq.html"><strong aria-hidden="true">1.1.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../Installation/index.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Installation/guides/source.html"><strong aria-hidden="true">2.1.</strong> Installing from source</a></li><li class="chapter-item expanded "><a href="../Installation/guides/flatpak.html"><strong aria-hidden="true">2.2.</strong> Installing from Flatpak</a></li><li class="chapter-item expanded "><a href="../Installation/guides/package.html"><strong aria-hidden="true">2.3.</strong> Installing from package</a></li></ol></li><li class="chapter-item expanded "><a href="../Configuration/index.html"><strong aria-hidden="true">3.</strong> Configuration</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Configuration/tips-and-tricks/index.html"><strong aria-hidden="true">3.1.</strong> Tips and tricks</a></li></ol></li><li class="chapter-item expanded "><a href="../Contributing/index.html"><strong aria-hidden="true">4.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="../Troubleshooting/index.html"><strong aria-hidden="true">5.</strong> Troubleshooting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Troubleshooting/winehq.html"><strong aria-hidden="true">5.1.</strong> Reporting issues to WineHQ</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../Home/index.html"><strong aria-hidden="true">1.</strong> Home</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Home/faq.html"><strong aria-hidden="true">1.1.</strong> FAQ</a></li></ol></li><li class="chapter-item expanded "><a href="../Installation/index.html"><strong aria-hidden="true">2.</strong> Installation</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Installation/guides/source.html"><strong aria-hidden="true">2.1.</strong> Installing from source</a></li><li class="chapter-item expanded "><a href="../Installation/guides/flatpak.html"><strong aria-hidden="true">2.2.</strong> Installing from Flatpak</a></li><li class="chapter-item expanded "><a href="../Installation/guides/package.html"><strong aria-hidden="true">2.3.</strong> Installing from package</a></li></ol></li><li class="chapter-item expanded "><a href="../Configuration/index.html"><strong aria-hidden="true">3.</strong> Configuration</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Configuration/tips-and-tricks/index.html"><strong aria-hidden="true">3.1.</strong> Tips and tricks</a></li></ol></li><li class="chapter-item expanded "><a href="../Contributing/index.html"><strong aria-hidden="true">4.</strong> Contributing</a></li><li class="chapter-item expanded "><a href="../Troubleshooting/index.html"><strong aria-hidden="true">5.</strong> Troubleshooting</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../Troubleshooting/winehq.html" class="active"><strong aria-hidden="true">5.1.</strong> Reporting issues to WineHQ</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -109,7 +109,7 @@
                         <a href="https://github.com/vinegarhq/vinegar" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
-                        <a href="https://github.com/vinegarhq/vinegarhq.github.io/edit/main/src/Home/index.md" title="Suggest an edit" aria-label="Suggest an edit">
+                        <a href="https://github.com/vinegarhq/vinegarhq.github.io/edit/main/src/Troubleshooting/winehq.md" title="Suggest an edit" aria-label="Suggest an edit">
                             <i id="git-edit-button" class="fa fa-edit"></i>
                         </a>
                     </div>
@@ -136,25 +136,66 @@
 
                 <div id="content" class="content">
                     <main>
-                        <p align="center">
-  <img style="max-width: 30%" src="/favicon.svg">
-</p>
-<h2 id="welcome-to-the-documentation-of-the-vinegar-project"><a class="header" href="#welcome-to-the-documentation-of-the-vinegar-project">Welcome to the documentation of the Vinegar project!</a></h2>
-<ul>
-<li>Vinegar is a transparent, minimal, configurable, and fast bootstrapper for Roblox Player and Roblox Studio.</li>
-<li>The software and documentation are both open source, and can be accessed <a href="https://github.com/vinegarhq">on GitHub</a>.</li>
-<li>There is no graphical configuration interface for Vinegar at this time.</li>
-<li>Vinegar is an alternative to <a href="https://brinkervii.gitlab.io/grapejuice/">Grapejuice</a>.</li>
-</ul>
-<p>To get started, proceed to <a href="/Installation/index.html">the installation guide</a>!</p>
-<p>The Discord server for Vinegar can be found <a href="https://discord.gg/dzdzZ6Pps2">here</a>.</p>
+                        <h1 id="reporting-issues-to-winehq"><a class="header" href="#reporting-issues-to-winehq">Reporting issues to WineHQ</a></h1>
+<p><strong>Warning</strong>: This guide is only recommended for advanced users. If facing issues, please follow <a href="./index.html">Troubleshooting</a> instructions first.</p>
+<p>Vinegar can be configured to help you determine whether a bug/issue is caused by Wine, so you can submit a report to WineHQ without violating their guidelines.</p>
+<p>To begin, create a new toml configuration file in an appropriate location, with the following content:</p>
+<pre><code class="language-toml"># Written for Vinegar v1.4.4.
+
+# WARNING: This should be left empty if your system has WineHQ packages installed (https://wiki.winehq.org/Download).
+# Otherwise, either install WineHQ packages or set wineroot to a staging/development wine's path.
+# TL;DR: Ensure Vinegar uses a staging/development wine, otherwise your report is INVALID.
+wineroot = &quot;&quot; 
+
+# Symbols definition:
+# (X)   = DO NOT EDIT: This option should never be changed. (will invalidate all reports) 
+# (?)   = This option may be edited. In case of doubt, do not change.
+# (...) = User defined options can be added here (not recommended, may invalidate your report)
+
+dxvk_version = &quot;&quot;           # (X)
+multiple_instances = false  # (X)
+sanitize_env = false        # (X)
+
+[env]
+WINEDEBUG = &quot;&quot;              # (?): Use this to increase Wine log verbosity.
+# (...)
+DXVK_LOG_PATH = &quot;&quot;          # (X)
+WINEESYNC = &quot;&quot;              # (X)
+WINEFSYNC = &quot;&quot;              # (X)
+WINEDLLOVERRIDES = &quot;&quot;       # (X)
+
+[player]
+channel = &quot;&quot;                # (?): Use this to debug a specific Roblox version.           
+forced_version = &quot;&quot;         # (?): Use this to debug a specific Roblox version.       
+renderer = &quot;D3D11&quot;          # (?): Use this to debug a specific renderer. (D3D11 will use Wine's built-in D3D opengl conversion.)
+dxvk = false                # (X)
+auto_kill_prefix = false    # (X)
+launcher = &quot;&quot;               # (X)
+
+[studio]
+channel = &quot;&quot;                # (?): Use this to debug a specific Roblox version.           
+forced_version = &quot;&quot;         # (?): Use this to debug a specific Roblox version.       
+renderer = &quot;D3D11&quot;          # (?): Use this to debug a specific renderer. (D3D11 will use Wine's built-in D3D opengl conversion.)
+dxvk = false                # (X)
+auto_kill_prefix = false    # (X)
+launcher = &quot;&quot;               # (X)
+
+[player.fflags]
+DFIntTaskSchedulerTargetFps = 60 # (X)
+</code></pre>
+<p>Read over every option carefully and follow the instructions in the comments.</p>
+<p><strong>Critical</strong>: This configuration file depends heavily on your Vinegar version! <u>Do <strong>NOT</strong> reuse it</u>, especially after updating Vinegar. Recheck this guide to ensure you have the latest version of the configuration.</p>
+<p>Once the file is ready, set the <code>WINEPREFIX</code> env var to a temporary location, then run Vinegar with the <code>-config (filepath)</code> flag to use the cfg you just created. </p>
+<p>The command should be similar to this if all steps were followed correctly: <code>WINEPREFIX=/tmp/report vinegar -config /home/jrelvas/Documents/winehq-report.toml player</code>.</p>
+<p>Caveat: Your desktop entries will obviously not be affected by this, preventing you from logging into studio or executing actions from roblox.com properly. You will have to edit them to reflect the changes above.</p>
+<p><strong>Warning</strong>: Keep in mind that any issues you face while following these steps are unsupported and should not be reported to us.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="next" href="../Home/faq.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
+                            <a rel="prev" href="../Troubleshooting/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
                             </a>
                         <div style="clear: both"></div>
                     </nav>
@@ -162,8 +203,8 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="next" href="../Home/faq.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
+                    <a rel="prev" href="../Troubleshooting/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
                     </a>
             </nav>
 
