@@ -182,8 +182,17 @@
 <tr><td><code>forced_version</code></td><td>forces Vinegar to use a specific version, the release channel must be adjusted for the version.</td><td>none</td></tr>
 <tr><td><code>auto_kill_prefix</code></td><td>automatically kill the wineprefix after the process exits                      .</td><td><code>true</code></td></tr>
 <tr><td><code>dxvk</code></td><td>automatically uses DXVK for the application and installs if necessary.</td><td><code>true</code></td></tr>
+<tr><td><code>gpu</code></td><td>the gpu which Vinegar should use for running Roblox.</td><td><code>&quot;prime-discrete&quot;</code></td></tr>
 </tbody></table>
-<p>Rich presence for Studio may not function correctly, as the BloxstrapRPC protocol had only been implemented for Player; keep in mind that Discord RPC includes telemetry by default.</p>
+<p><br/>Refer to the following table for valid <code>gpu</code> values:</p>
+<table><thead><tr><th>Value</th><th>Effect</th></tr></thead><tbody>
+<tr><td><code>&quot;prime-discrete&quot;</code></td><td>Runs Roblox with your discrete gpu.*</td></tr>
+<tr><td><code>&quot;integrated&quot;</code></td><td>Runs Roblox with your integrated graphics.*</td></tr>
+<tr><td><code>&quot;&quot;</code></td><td>Skip logic; leave gpu choice up to your Vulkan/OpenGL drivers. Vulkan typically chooses the fastest gpu in your system, while OpenGL chooses the default.</td></tr>
+<tr><td><code>&quot;[int]&quot;</code></td><td>Runs Roblox with the gpu corresponding to the given index.<br/>Use the <code>sysinfo</code> command to show a list of gpus in your system and their indexes.</td></tr>
+</tbody></table>
+<p><sub>*On non-PRIME systems, this value has the same effect as `""`.</sub></p>
+<p><br/>Rich presence for Studio may not function correctly, as the BloxstrapRPC protocol had only been implemented for Player; keep in mind that Discord RPC includes telemetry by default.</p>
 <p>The renderer must be one of the following: <code>&quot;OpenGL&quot;</code>, <code>&quot;D3D11FL10&quot;</code>, <code>&quot;D3D11&quot;</code>, <code>&quot;Vulkan&quot;</code>;
 when using DXVK, ensure that the renderer is <code>&quot;D3D11&quot;</code>, otherwise Roblox will not utilize DXVK.</p>
 <p>Sub-sections for FFlags and environment variables are specified with the section (eg. <code>[player.env]</code>)</p>
