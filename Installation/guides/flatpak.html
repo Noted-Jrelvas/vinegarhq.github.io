@@ -145,15 +145,6 @@ flatpak run io.github.vinegarhq.Vinegar
 <p>To uninstall manually from a terminal:</p>
 <pre><code>flatpak uninstall --delete-data io.github.vinegarhq.Vinegar
 </code></pre>
-<h1 id="building-flatpak-from-source"><a class="header" href="#building-flatpak-from-source">Building Flatpak from source</a></h1>
-<p><strong>Note</strong>: Vinegar's Flatpak comes with it's own Wine build-system, so be prepared to compile Wine.</p>
-<p>To build Vinegar, you will need <code>flatpak-builder</code> installed on your system.</p>
-<p>Clone Vinegar's Flatpak git repository manifests and build the Flatpak:</p>
-<pre><code class="language-sh">git clone https://github.com/vinegarhq/io.github.vinegarhq.Vinegar
-cd io.github.vinegarhq.Vinegar
-make
-</code></pre>
-<p>If you see errors about missing runtimes, make sure to install those with <code>flatpak install --user &lt;runtime&gt;</code>.</p>
 
                     </main>
 
