@@ -141,27 +141,19 @@
 <hr />
 <h2 id="general-issues"><a class="header" href="#general-issues">General Issues</a></h2>
 <p>Known Vinegar issues which affect both Roblox Player and Roblox Studio:</p>
-<ul>
-<li>
 <h3 id="cursor-fails-to-lock"><a class="header" href="#cursor-fails-to-lock">Cursor fails to lock</a></h3>
-<p>This is due to a Roblox update causing an incompatibility with Wayland's handling of mouse events via XWayland. Switching to X11 on your display manager fixes this issue.</p>
-</li>
-<li>
+<p>On XWayland, the cursor cannot be locked unless it's invisible. This impacts the functionality of Roblox's first-person and shiftlock modes. This also impacts Studio's edit mode, where the camera rotation depends on the cursor being locked and is broken.</p>
+<p>Switching to a real X11 session fixes this issue. Some users have also reported success with gamescope's <code>--force-grab-cursor</code> option, but this doesn't seem to work for everyone.</p>
+<p>Once Wine's wayland driver is introduced (scheduled for next year), this issue should be fixed.</p>
 <h3 id="white-screen"><a class="header" href="#white-screen">White Screen</a></h3>
-<p>This specific problem can be the same as many other root causes, a common one is your system missing the graphics libraries required for Wine; you can check <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">Lutris Docs: Installing Drivers</a> out for more information.</p>
-<p>This may also indicate your GPU not supporting Vulkan or not supporting modern Vulkan; Use the OpenGL renderer, or set the installed DXVK version to one which includes a legacy version of Vulkan that your GPU supports.</p>
-</li>
-<li>
+<p>Usually, this is a sign of missing graphics libraries which Wine depends on to work. Check <a href="https://github.com/lutris/docs/blob/master/InstallingDrivers.md">Lutris Docs: Installing Drivers</a> out for instructions on how to install them.</p>
+<p>This may also indicate that your GPU doesn't meet the minimum Vulkan requirements; Use the OpenGL renderer, or set the installed DXVK version to one which includes a legacy version of Vulkan supported by your GPU.</p>
 <h3 id="stale-wineserver"><a class="header" href="#stale-wineserver">Stale wineserver</a></h3>
-<p>There are multiple reasons for why this would occur, but <code>vinegar kill</code> will suffice in order to fix the issue.</p>
-</li>
-<li>
-<h3 id="shortcuts-for-roblox-appstudio-not-appearing"><a class="header" href="#shortcuts-for-roblox-appstudio-not-appearing">Shortcuts for Roblox App/Studio not appearing</a></h3>
-<p>This usually happens with the Vinegar Flatpak. The fix is rebooting the system.</p>
-</li>
-<li>
+<p>Although this normally doesn't happen, the wineserver might continue running in certain cases. Using the <code>vinegar kill</code> command should stop it.</p>
+<h3 id="no-roblox-desktop-entriesshortcuts"><a class="header" href="#no-roblox-desktop-entriesshortcuts">No Roblox desktop entries/shortcuts</a></h3>
+<p>This issue has no known cause, but appears to be more frequent with the Vinegar Flatpak. Rebooting your system should fix it.</p>
 <h3 id="stuttering-and-freezing-nvidia-gpu"><a class="header" href="#stuttering-and-freezing-nvidia-gpu">Stuttering and freezing (Nvidia GPU)</a></h3>
-<p>Although stuttering can happen for many different reasons, it's a very common issue on Nvidia. It seems that Nvidia's drivers (on Wayland, also varies widely between cards of different generations) have major issues with stuttering and unexplainable frame locking in certain systems, but only if the window is fullscreen. This issue has been confirmed to exist for configurations where the Nvidia GPU drives the display and ones where PRIME offload is used (IGPU drives the display, DGPU renders the game).</p>
+<p>Although stuttering can happen for many different reasons, it's a very common issue on certain Nvidia cards. It seems that Nvidia's drivers on Wayland have major issues with stuttering and unexplainable frame locking in certain systems, but only if the window is fullscreen. This issue has been confirmed to exist for configurations where the Nvidia GPU drives the display and ones where PRIME offload is used (IGPU drives the display, DGPU renders the game).</p>
 <p>There's no known fix (as of October 14th, 2023), but the following workarounds might help depending on the system:</p>
 <ul>
 <li>
@@ -179,14 +171,10 @@ If none of the workarounds above work or apply, consider using Roblox windowed i
 This may also be your GPU not supporting Vulkan or not supporting modern Vulkan; Use the OpenGL renderer, or set the installed DXVK version to one which includes a legacy version of Vulkan that your GPU supports.</p>
 </li>
 </ul>
-</li>
-</ul>
 <hr />
 <h2 id="player-issues"><a class="header" href="#player-issues">Player Issues</a></h2>
 <p>Known Roblox Player issues:</p>
-<ul>
-<li>
-<h3 id="memory-dump"><a class="header" href="#memory-dump">Memory Dump</a></h3>
+<h3 id="memory-dump"><a class="header" href="#memory-dump">Memory dump</a></h3>
 <p>This is because of <a href="https://gitlab.winehq.org/wine/wine/-/commit/ea640f6cece7660ffc853b7d574fbe52af34901a">commit ea640f6c</a> (on Wine 8.16 and newer) causing Roblox to create a memory dump.</p>
 <p>There are 2 workarounds:</p>
 <ul>
@@ -197,28 +185,20 @@ This may also be your GPU not supporting Vulkan or not supporting modern Vulkan;
 <p>Using <a href="https://github.com/GloriousEggroll/wine-ge-custom/releases">Wine-GE</a> or a patched build of Wine with the above commit reverted.</p>
 </li>
 </ul>
-</li>
-<li>
 <h3 id="facial-recognition--webcam-does-not-work-unsupported"><a class="header" href="#facial-recognition--webcam-does-not-work-unsupported">Facial recognition / Webcam does not work (Unsupported)</a></h3>
 <p>Currently, Wine relies on the legacy <a href="https://www.kernel.org/doc/html/latest/userspace-api/media/v4l/v4l2.html">v4l2</a> API for supporting webcams. One of its limitations is that a device can only be accessed by one process at any given time. For some unknown reason, Wine attempts to access the webcam multiple times, causing it to fail.
 Some users have reported that creating a <a href="https://github.com/umlaeute/v4l2loopback">v4l2 loopback</a> device fixes this issue (for example, using OBS's virtual camera feature), but this hasn't been confirmed.</p>
 <p>This issue should be eventually fixed once Wine has a native pipewire driver, but there's currently no predicted ETA or schedule for that. Until then, <strong>webcam support is out of Vinegar's scope</strong>, as we have no feasible way of fixing the underlying problems.</p>
-</li>
-</ul>
 <hr />
 <h2 id="studio-issues"><a class="header" href="#studio-issues">Studio Issues</a></h2>
 <p>Known Roblox Studio issues:</p>
-<ul>
-<li>
 <h3 id="stuck-on-the-splash-screen"><a class="header" href="#stuck-on-the-splash-screen">Stuck on the splash screen</a></h3>
-<p>This usually happens due to issues with the DPI. In order to fix it, set the DPI to 97 (already done by default) by running <code>vinegar exec winecfg</code> to open the Wine configuration, and then head to the Graphics tab. There should be a DPI option at the bottom of the page.</p>
-<p>A DPI greater than 96 could be set, but this causes in-game GUIs to be larger than normal. Also, because of a Wine issue, using a non-default DPI will cause the Roblox viewport to be a bit blurry. Additionally, make sure that the DPI is an even number, otherwise GUIs will be blurry.</p>
-</li>
-<li>
-<h3 id="unable-to-log-in"><a class="header" href="#unable-to-log-in">Unable to log in</a></h3>
-<p>This occurs due to WebView2 issues with Wine. The only workaround is to log in through the <a href="https://roblox.com">Roblox website</a> and launch/edit an experience, or to log in through the same method but launching Player, which authenticates Studio in the process.</p>
-</li>
-<li>
+<p>Studio is currently broken with 96 DPI rendering. Set the DPI to 97 (already done by default) by running <code>vinegar exec winecfg</code> to open the Wine configuration, and then head to the Graphics tab. There should be a DPI option at the bottom of the page.</p>
+<p>Other DPI values work, as long as they're <strong>NOT</strong> 96. Note that values not divisible by 96 will make the interface blurrier, and that the game world view becomes blurrier as DPI increases. This is a limitation with Wine's X11 implementation.</p>
+<h3 id="unable-to-log-in---webview2-error"><a class="header" href="#unable-to-log-in---webview2-error">Unable to log in - WebView2 error</a></h3>
+<p>WebView2 is currently not supported, so there's no way to log in directly inside of studio.</p>
+<p>Follow the on-screen prompt and click &quot;Log in via browser&quot;. This will open an authentication website in your browser. Once you're done authenticating, you might be prompted to allow the use of the <code>roblox-studio-auth</code> protocol. Make sure to say &quot;yes&quot;.</p>
+<p>If all steps were followed correctly, studio should automatically log into your account.</p>
 <h3 id="your-gpu-is-incompatible-error"><a class="header" href="#your-gpu-is-incompatible-error">&quot;Your GPU is incompatible&quot; error</a></h3>
 <p>This issue is most commonly caused by the Wine build not having the Vulkan ChildWindow patch applied. There are a couple solutions:</p>
 <ul>
@@ -232,13 +212,10 @@ Some users have reported that creating a <a href="https://github.com/umlaeute/v4
 <p>Disabling DXVK in the Vinegar configuration.</p>
 </li>
 </ul>
-</li>
-<li>
 <h3 id="buggy-qt-fonts"><a class="header" href="#buggy-qt-fonts">Buggy QT fonts</a></h3>
-<p>This is due to an incompatibility with WineD3D. Enabling DXVK in the configuration file should solve this issue.</p>
-</li>
-</ul>
-<hr />
+<p>This is a known issue with WineD3D. Enabling DXVK in the configuration file should solve this issue.</p>
+<h3 id="flickering-widgets-and-plugin-windows"><a class="header" href="#flickering-widgets-and-plugin-windows">Flickering widgets and plugin windows</a></h3>
+<h2 id="this-is-a-known-issue-with-wined3d-enabling-dxvk-in-the-configuration-file-should-solve-this-issue"><a class="header" href="#this-is-a-known-issue-with-wined3d-enabling-dxvk-in-the-configuration-file-should-solve-this-issue">This is a known issue with WineD3D. Enabling DXVK in the configuration file should solve this issue.</a></h2>
 
                     </main>
 

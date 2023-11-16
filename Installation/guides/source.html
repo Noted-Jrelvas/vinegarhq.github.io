@@ -148,18 +148,17 @@
 <h2 id="building-vinegar"><a class="header" href="#building-vinegar">Building Vinegar</a></h2>
 <p>To build Vinegar from source, you will need to install Go; it can be found packaged as <code>golang</code> or <code>go</code> on some Linux distributions.</p>
 <p>Clone Vinegar's git repository and build Vinegar:</p>
-<pre><code class="language-sh">$ git clone https://github.com/vinegarhq/vinegar
-$ cd vinegar
-$ make
+<pre><code class="language-sh">git clone https://github.com/vinegarhq/vinegar
+cd vinegar
+make
 </code></pre>
 <h2 id="installing-vinegar"><a class="header" href="#installing-vinegar">Installing Vinegar</a></h2>
-<p>To get Vinegar's GUI (Splash) dependencies, you need to install Gio's (the GUI framework we use) dependencies, you can find them and the relevant section for your distribution <a href="https://gioui.org/doc/install/linux">here</a></p>
 <p>To install Vinegar (in the source directory of vinegar):</p>
-<pre><code class="language-sh"># make install
+<pre><code class="language-sh">make install
 </code></pre>
 <p>This will install Vinegar itself and it's icons for Roblox and Vinegar. It will also install the desktop files required for recognition by MIME.</p>
 <p>Afterwards, you may set Vinegar as the default launcher or handler for Roblox Player and Studio respectively with the following command:</p>
-<pre><code class="language-sh">$ make mime
+<pre><code class="language-sh">make mime
 </code></pre>
 <p>Alternatively, the following lines can be appended to <code>mimeapps.list</code> for users without <a href="https://linux.die.net/man/1/xdg-mime"><code>xdg-mime</code></a> on their system, which is used by the Makefile <code>mime</code> target:</p>
 <pre><code>[Default Applications]
